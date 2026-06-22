@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
+import NavBar from "@/components/NavBar";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -27,7 +28,14 @@ export const metadata: Metadata = {
     "Open source PACS infrastructure and DICOM viewer integration for veterinary practices in Ireland and beyond.",
 };
 
-const navLinks = [
+// const navLinks = [
+//   { href: "/services", label: "Services" },
+//   { href: "/technology", label: "Technology" },
+//   { href: "/about", label: "About" },
+//   { href: "/contact", label: "Contact" },
+// ];
+
+const footerLinks = [
   { href: "/services", label: "Services" },
   { href: "/technology", label: "Technology" },
   { href: "/about", label: "About" },
@@ -42,7 +50,7 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased bg-canvas text-ink`}
       >
-        <header className="border-b border-surface">
+        {/* <header className="border-b border-surface">
           <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             <Link
               href="/"
@@ -70,15 +78,17 @@ export default function RootLayout({
               Let&apos;s get started
             </Link>
           </nav>
-        </header>
+        </header> */}
 
+        <NavBar />
+        
         {children}
 
         <footer className="border-t border-surface mt-24">
           <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-6 text-sm text-muted">
             <p className="font-mono">OSIRL · Open source PACS for veterinary practices</p>
             <div className="flex gap-6">
-              {navLinks.map((link) => (
+              {footerLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
